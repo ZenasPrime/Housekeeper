@@ -1,0 +1,12 @@
+{
+	"name": "come.zenasprime.housekeeper",
+	"version": "0.0.1",
+	"displayName": "Housekeeper",
+	"description": "Housekeeper provide simple quality of life functionality to Unity.",
+	"unity": "2022.1",
+	"dependencies": {},
+	"author", {
+		"name": "Zenas Bellace",
+		"email": "zenas@quadratron.com"
+	}
+}
