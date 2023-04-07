@@ -49,6 +49,9 @@ namespace ZenTools.Housekeeper
             {
                 isHousekeeperRun = false;
                 EditorApplication.ExitPlaymode();
+
+                string scenePath = lastActiveScenePath;
+                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
             }
             else
             {
@@ -90,6 +93,12 @@ namespace ZenTools.Housekeeper
             {
                 string scenePath = lastActiveScenePath;
                 EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
+            }
+
+            if (stateChange == PlayModeStateChange.ExitingPlayMode && isHousekeeperRun)
+            {
+                string activeScene = SceneManager.GetActiveScene().path;
+                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(activeScene);
             }
         }
 
