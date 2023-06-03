@@ -1,11 +1,5 @@
 pipelines:
   default:
     - step:
-        name: Sync GitHub Mirror
-        image: alpine/git:latest
-        clone:
-          enabled: false
         script:
-          - git clone --bare git@bitbucket.org:zenasprime/housekeeper.git
-          - cd housekeeper.git
           - git push --mirror git@bitbucket.org:zenasprime/housekeeper.git
