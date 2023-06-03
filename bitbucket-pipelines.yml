@@ -7,5 +7,5 @@ pipelines:
           enabled: false
         script:
           - git clone --bare git@bitbucket.org:zenasprime/housekeeper.git
-          - cd housekeeper.git.git
+          - cd housekeeper.git
           - git push --mirror git@github.com:ZenasPrime/Housekeeper.git
