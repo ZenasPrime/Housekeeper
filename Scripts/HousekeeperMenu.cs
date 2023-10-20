@@ -37,7 +37,6 @@ namespace ZenTools.Housekeeper
     {
         private enum PlayModeEntryMethod { Default, HousekeeperRun }
         private static PlayModeEntryMethod currentPlayModeEntryMethod = PlayModeEntryMethod.Default;
-        private static string lastActiveScenePath = "";
         
         /// <summary>
         /// Adds a new ZenTools/Housekeeper menu item called 'Run'.
@@ -51,9 +50,6 @@ namespace ZenTools.Housekeeper
             {
                 currentPlayModeEntryMethod = PlayModeEntryMethod.Default;
                 EditorApplication.ExitPlaymode();
-
-                string scenePath = lastActiveScenePath;
-                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
             }
             else
             {
@@ -75,9 +71,6 @@ namespace ZenTools.Housekeeper
                 {
                     // opens a dialog that asks the user if they want to save the current scene changes
                     EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-
-                    // get the current scene path and store it
-                    lastActiveScenePath = EditorSceneManager.GetActiveScene().path;
 
                     // get the first scene in Build settings and set the Editor to use it when starting PlayMode
                     string scenePath = EditorBuildSettings.scenes[0].path;
@@ -107,17 +100,10 @@ namespace ZenTools.Housekeeper
         {
             if (stateChange == PlayModeStateChange.EnteredPlayMode)
             {
-<<<<<<< Updated upstream
-                string scenePath = lastActiveScenePath;
-                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
-=======
                 if (currentPlayModeEntryMethod == PlayModeEntryMethod.Default)
                 {
                     EditorSceneManager.playModeStartScene = null;
                 }
-                
-                //string scenePath = lastActiveScenePath;
-                //EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
             } 
             else if (stateChange == PlayModeStateChange.ExitingPlayMode)
             {
@@ -128,13 +114,6 @@ namespace ZenTools.Housekeeper
                 }
 
                 currentPlayModeEntryMethod = PlayModeEntryMethod.Default;
->>>>>>> Stashed changes
-            }
-
-            if (stateChange == PlayModeStateChange.ExitingPlayMode && isHousekeeperRun)
-            {
-                string activeScene = SceneManager.GetActiveScene().path;
-                EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(activeScene);
             }
         }
 
