@@ -112,9 +112,10 @@ namespace ZenTools.Housekeeper
                     string activeScene = SceneManager.GetActiveScene().path;
                     EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(activeScene);
                 }
-
                 currentPlayModeEntryMethod = PlayModeEntryMethod.Default;
             }
+            
+            Debug.LogError(EditorSceneManager.playModeStartScene);
         }
 
         /// <summary>
@@ -126,8 +127,12 @@ namespace ZenTools.Housekeeper
         /// <param name="next">not used</param>
         public static void OnSceneChange(Scene current, Scene next)
         {
-            string scenePath = EditorSceneManager.GetActiveScene().path;
-            EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
+            // This seems to be causing an issue where the editor needs to enter
+            // play mode twice before the currently active scene is used when played.
+            // I may have put this here for some other edge case so I'm leaving it
+            // in for now until such time I need it implemented again.
+            //string scenePath = EditorSceneManager.GetActiveScene().path;
+            //EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
         }
 
         /// <summary>
