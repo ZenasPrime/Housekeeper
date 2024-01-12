@@ -1,6 +1,6 @@
 {
 	"name": "com.zenasprime.housekeeper",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"displayName": "Housekeeper",
 	"description": "Housekeeper adds simple quality of life functionality to Unity.",
 	"unity": "2022.3",
