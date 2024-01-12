@@ -1,5 +1,0 @@
-pipelines:
-  default:
-    - step:
-        script:
-          - git push --mirror git@github.com:ZenasPrime/Housekeeper.git
