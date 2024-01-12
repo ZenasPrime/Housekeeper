@@ -114,8 +114,6 @@ namespace ZenTools.Housekeeper
                 }
                 currentPlayModeEntryMethod = PlayModeEntryMethod.Default;
             }
-            
-            Debug.LogError(EditorSceneManager.playModeStartScene);
         }
 
         /// <summary>
